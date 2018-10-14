@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <div class="container" id="main">
+        <div class="row">
+            <div class="col">
+                <h2 class="text">Menu</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group"></div>
+                <label for="search">Find you favorite dish</label>
+                <input type="text" margin-bottom='20px' class="form-control" 
+                id="search"
+                v-model="search"
+                 placeholder="Dish...">
+                
+                <ul class="list-group list-group-flush">
+                      <li v-for= "(dish,index) in filteredFood"
+                      class="list-group-item list-group-item-action"
+                      v-on:click='selectFood(index)'
+                      v-bind:class="{'active':selectedFoodIndex===index}"
+                      >{{dish.name}}
+                      </li>
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-7">
+             <div class="row" id="Dishes">
+                 <div class="col-md-5 pt-4">
+                     <h2>{{dish.name}}</h2>
+                     <img
+                     v-bind:src="dish.image" 
+                     v-bind:alt="dish.name">
+                 </div>
+                 <div class="col-md-7 pt-5 ingridients">
+                     <h5>Ingridients</h5>
+                     <ul>
+                         <li>{{dish.mainIngridient}}</li>
+                         <li>{{dish.secondIngidient}}</li>
+                         <li>{{dish.thirdIngridient}}</li>
+                     </ul>
+                     <h5>Price:<strong>{{dish.price}}</strong></h5>
+                    <button 
+                    v-on:click="Order"
+                    class="btn btn-primary">Buy</button>
+                 </div>
+             </div>       
+        </div>
+        </div>
+        <div class="row" v-if="orders.length!==0">
+            <div class="col-md-12 order">
+                <ul class="list-group-item">
+                    <li
+                    v-for='(order,index) in orders' 
+                    class="list-group-item list-group-item-success"
+                    v-on:userdelete ="remove(index)"
+                    >{{order.text,order.type,order.date }}
+                    
+                    <button 
+                     v-on:click="Cancel(index)"
+                    
+                    type="button" class="btn btn-danger">Cancel</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row total"
+           v-if="orders.length !== 0">
+            <div class="col-md-7"></div>
+            <div class="col-md-4">
+                <ul class="list-group-item">
+                <li 
+                class="list-group-item list-group-item-info">Total Price  - {{totalPrice}}$</li>
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
+            </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

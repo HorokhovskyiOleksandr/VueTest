@@ -1,0 +1,112 @@
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+/*-------------------------------------------------------Задача на адаптивность 2 блоковindex.html----------------------------*/
+/*---------------------------------------------Адаптивность блкоков при помощи свойства max-width--------------------*/
+/*
+#block-flex{
+    max-width:1100px;
+    margin: 0 auto;
+    min-height: 100px;
+}.class-flex{
+    
+    width:48%;
+    height: 150px;
+    border:10px solid green;
+}*/
+
+
+/*------------------------------------------------Max-width при использовании с Гридами-------------------------*/
+/*
+#block-flex{
+    display: grid;
+    max-width:1000px;
+    grid-template-columns: repeat(auto-fill, 500px);
+    grid-template-rows: 100px;
+    margin: 0 auto;
+    
+}
+.class-flex{
+    
+    background-color: black;
+    min-height: 100px;
+}*/
+
+/*------------------------------------------------Max-width при использовании с Flex-------------------------*/   
+#block-flex{
+    display: flex;
+    max-width:1000px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    
+
+}
+.class-flex{
+    float: left;
+    border:10px solid green;
+    min-height: 100px;
+    width:480px;
+}
+
+
+
+
+/*-------------------------------------------------------Vue.js application index2.html----------------------------*/
+
+
+.container{
+    margin-top:50px;
+}
+
+.form-control{
+    margin-bottom: 10px;
+}
+#Dishes h2{
+    text-align: center;
+}
+#Dishes img{
+    width:100%;
+    height: auto;
+}
+.ingridients h5{
+    text-align: center;
+}
+.ingridients ul{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+.ingridients button{
+    margin: 0 auto;
+    display: block;
+}
+.order ul{
+    margin-top:50px;
+    border:none;
+   
+}
+.order ul li button{
+/*    float: right;*/
+    float:right;
+    margin: 0 auto;
+    padding: 0;
+/*    margin: 0;*/
+}
+.total ul{
+    list-style: none;
+    padding: 0;
+    border:none;
+}
+.total ul li{
+    float:right;
+}
+.deleted{
+    display:none;
+}
